@@ -1,0 +1,58 @@
+﻿@model AdviseeGPATracker.Models.ViewModels.CourseEditVM
+
+@{
+    ViewData["Title"] = $"Edit Course {Model.Code}";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" value="@Model.Id">
+            <input type="hidden" asp-for="AdviseeId" value="@Model.AdviseeId">
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditHours" class="control-label"></label>
+                <input asp-for="CreditHours" class="form-control" />
+                <span asp-validation-for="CreditHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LetterGrade" class="control-label"></label>
+                <select asp-for="LetterGrade" class="form-control">
+                    <option>Select an option...</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                    <option value="U">U</option>
+                </select>
+                <span asp-validation-for="LetterGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to Advisee List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

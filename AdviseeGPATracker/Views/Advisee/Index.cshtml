@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AdviseeGPATracker.Models.ViewModels.AdviseeListVM>
+
+@{
+    ViewData["Title"] = "Advisees";
+}
+
+<h2>
+    @ViewData["Title"]
+    <a asp-action="Create" class="btn btn-primary pull-right">
+        <i class="fas fa-plus"></i>
+        Create New
+    </a>
+</h2>
+
+@if (Model.Count() > 0)
+{
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalGPA)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalGPA)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else
+{
+    <p>No advisees found. Create one first!</p>
+}
+<span><strong>Total Advisees:</strong> @Model.Count()</span>

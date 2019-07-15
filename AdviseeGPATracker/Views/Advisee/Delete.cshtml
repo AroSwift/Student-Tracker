@@ -1,0 +1,38 @@
+﻿@model AdviseeGPATracker.Models.ViewModels.AdviseeDeleteVM
+
+@{
+    ViewData["Title"] = $"Delete {Model.FirstName} {Model.LastName}?";
+}
+
+<h2>Are you sure you want to delete @Model.FirstName @Model.LastName?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalGPA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalGPA)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-default back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Advisee List
+        </a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>
