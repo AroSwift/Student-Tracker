@@ -1,1 +1,1 @@
-# Student-Tracker
+# Student Tracker
